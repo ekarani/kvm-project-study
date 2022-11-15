@@ -28,7 +28,7 @@ data "template_file" "network_config" {
 resource "libvirt_pool" "vm" {
     name = "${var.VM_HOSTNAME}_pool"
     type = "dir" 
-    path = "/images_kvm/terraform-provider-libvirt-pool-ubuntu"
+    path = "/images_kvm/o-que-deu-certo"
     
 }
 
