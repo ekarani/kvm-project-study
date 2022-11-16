@@ -80,6 +80,8 @@ Ao longo do deploy do KVM com terraform, há esses outros comandos virsh que ser
     virsh pool-undefine [nome]
     ```
 
+### Como funciona Terraform [to enhance yet]
+
 ### Subindo um KVM com Terraform
 #### Instalando Terraform
 
@@ -92,14 +94,16 @@ sudo apt-get update && sudo apt-get install terraform
 ```
 Para checar se a instalação do Terraform foi bem sucedida: `terraform -v`
 
-#### Sobre o projeto terraform
+#### Sobre o projeto terraform [to enhance yet]
+[Libvirt Provider no Terraform Registry](https://registry.terraform.io/providers/dmacvicar/libvirt/latest/docs)
+
 Nesse projeto, usamos dois arquivos terraform (.tf) e dois arquivos de configuração.
 Esses arquivos .tf poderiam ter sido reunidos num só arquivo, mas temos em mãos dois por fins de organização. Um arquivo, o *variables.tf* contém as 
     
 
 
 
-
+### Referências
 [Página de manuais](https://libvirt.org/manpages/index.html)    |
     [Virtualização com libvirt](https://ubuntu.com/server/docs/virtualization-libvirt)  |
         [How to change kvm libvirt default storage location](https://ostechnix.com/how-to-change-kvm-libvirt-default-storage-pool-location/#:~:text=Libvirt%20provides%20storage%20management%20on%20a%20KVM%20host,and%20assigned%20to%20the%20VMs%20as%20block%20devices.)    |
