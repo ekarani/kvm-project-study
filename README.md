@@ -168,8 +168,8 @@ Resumindo o que fazer para verificar se a VM subiu, se está rodando e acessíve
         ```
         virsh net-list 
         ```
-        (Para o caso de não lembramos quaç é o nome da rede virtual)
-        No acesso via ssh, precisamos do IP da máquina. O seguinte comando irá nos informar iiso:
+        (Para o caso de não lembramos qual é o nome da rede virtual)
+        No acesso via ssh, precisamos do IP da máquina. O seguinte comando irá nos informar isso:
         ```
         virsh net-dhcp-leases [nome da rede]
         ```
