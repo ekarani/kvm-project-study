@@ -1,5 +1,4 @@
-# Estudos e testes em Terraform
-## Subindo uma KVM com Terraform
+# Subindo KVM com Terraform
 
 ### Glossário
 - **KVM:**
@@ -8,8 +7,10 @@
     API open-source de virtualização, tendo também daemon e ferramenta para gerenciamento de plataforma de virtualização. Pode ser usado com variadas tecnologias de virtualização.
 - **QEMU:**
     É o hypervisor que usaremos para rodar as máquinas virtuais. É um software que implementa um emulador de processador, permitindo virtualização de um sistema dentro do PC.
+- **Terraform:**
+    Ferramenta open-source de Infrastructure as Code (IAC) que possibilita a criação, mudança e melhoramento de infraestrutura. Com ela, é possível provisionar infraestrutura com códigos em linguagem declarativa e de fácil compreensão.
 
-### Sobre KVM com libvirt
+## Sobre KVM com libvirt
 Primeiro é preciso verificar se o hardware do computador suporta as extensões para virtualização
         ```kvm-ok```
 Feito isso, instale os pacotes:
@@ -80,9 +81,30 @@ Ao longo do deploy do KVM com terraform, há esses outros comandos virsh que ser
     virsh pool-undefine [nome]
     ```
 
-### Como funciona Terraform [to finish yet]
+## Terraform
+Terraform cria e gerencia recursos em diversos serviços e plataformas por meio de sua API. É com essa API e providers que é possível que Terraform interaja com quase qualquer plataforma ou serviço com API acessível.
+### Conceitos importantes
+- **Variáveis (variables)**: pares chave-valor
+- **Provider**: plugin que interage com APIs de serviços e seus recursos
+- **Module**: Diretório com templates Terraform contendo configurações definidas
+- **State**: Consiste em informação em cache sobre a infraestrutura gerenciada por Terraform
+- **Resources**: "Infrastrusture objects" (por exemplo: redes virtuais, instâncias de compute) que são usados na configuração e gerenciamento da infraestrutura.
 
-### Subindo um KVM com Terraform
+### Lifecycle
+1. `terraform init`
+
+Inicializa o diretório onde estão os arquivos de configuração. Havendo já definidos os providers nos arquivos .tf, o comando se encarrega de clonar as configurações necessárias para fazer uso dos resources referenciados pelos providers
+2. `terradorm plan`
+
+Pode ser opcional, mas é útil para criar o plano de execução que leve ao estado final desejado na infraestrutura. Ele aponta se está tudo certo nos arquivos de configuração antes de rodar.
+3. `terraform apply`
+
+Implementa as modificações na infraestrutura especificadas nos arquivos de configuração.
+4. `terraform destroy`
+
+É usado para deletar todos os recursos de infraesrtutura existentes, incluse para desfazer o que foi feito com o apply.
+
+### Subindo KVM com Terraform
 #### Instalando Terraform
 
 Execute os comandos abaixo:
@@ -105,6 +127,9 @@ Esses arquivos .tf poderiam ter sido reunidos num só arquivo, mas temos em mão
 
 ### Referências
 [Página de manuais](https://libvirt.org/manpages/index.html)    |
-    [Virtualização com libvirt](https://ubuntu.com/server/docs/virtualization-libvirt)  |
-        [How to change kvm libvirt default storage location](https://ostechnix.com/how-to-change-kvm-libvirt-default-storage-pool-location/#:~:text=Libvirt%20provides%20storage%20management%20on%20a%20KVM%20host,and%20assigned%20to%20the%20VMs%20as%20block%20devices.)    |
-            [How to provision VMs on KVM with terraform](https://computingforgeeks.com/how-to-provision-vms-on-kvm-with-terraform/)
+    [Virtualização com libvirt](https://ubuntu.com/server/docs/virtualization-libvirt)
+
+[How to change kvm libvirt default storage location](https://ostechnix.com/how-to-change-kvm-libvirt-default-storage-pool-location/#:~:text=Libvirt%20provides%20storage%20management%20on%20a%20KVM%20host,and%20assigned%20to%20the%20VMs%20as%20block%20devices.)    |
+    [How to provision VMs on KVM with terraform](https://computingforgeeks.com/how-to-provision-vms-on-kvm-with-terraform/)
+
+[Terraform for beginners](https://geekflare.com/terraform-for-beginners/)
