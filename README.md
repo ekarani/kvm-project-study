@@ -2,11 +2,11 @@
 ## Subindo uma KVM com Terraform
 
 ### Glossário
-- KVM
+- **KVM:**
     Kernel-based Virtual Machine
-- libvirt
+- **libvirt:**
     API open-source de virtualização, tendo também daemon e ferramenta para gerenciamento de plataforma de virtualização. Pode ser usado com variadas tecnologias de virtualização.
-- QEMU
+- **QEMU:**
     É o hypervisor que usaremos para rodar as máquinas virtuais. É um software que implementa um emulador de processador, permitindo virtualização de um sistema dentro do PC.
 
 ### Sobre KVM com libvirt
@@ -92,6 +92,7 @@ sudo apt-get update && sudo apt-get install terraform
 ```
 Para checar se a instalação do Terraform foi bem sucedida: `terraform -v`
 
+#### Sobre o projeto terraform
 Nesse projeto, usamos dois arquivos terraform (.tf) e dois arquivos de configuração.
 Esses arquivos .tf poderiam ter sido reunidos num só arquivo, mas temos em mãos dois por fins de organização. Um arquivo, o *variables.tf* contém as 
     
