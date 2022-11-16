@@ -93,16 +93,19 @@ Terraform cria e gerencia recursos em diversos serviços e plataformas por meio 
 ### Lifecycle
 1. `terraform init`
 
-Inicializa o diretório onde estão os arquivos de configuração. Havendo já definidos os providers nos arquivos .tf, o comando se encarrega de clonar as configurações necessárias para fazer uso dos resources referenciados pelos providers
-2. `terradorm plan`
+    Inicializa o diretório onde estão os arquivos de configuração. Havendo já definidos os providers nos arquivos .tf, o comando se encarrega de clonar as configurações necessárias para fazer uso dos resources referenciados pelos providers
+    
+2. `terraform plan`
 
-Pode ser opcional, mas é útil para criar o plano de execução que leve ao estado final desejado na infraestrutura. Ele aponta se está tudo certo nos arquivos de configuração antes de rodar.
+    Pode ser opcional, mas é útil para criar o plano de execução que leve ao estado final desejado na infraestrutura. Ele aponta se está tudo certo nos arquivos de configuração antes de rodar.
+
 3. `terraform apply`
 
-Implementa as modificações na infraestrutura especificadas nos arquivos de configuração.
+    Implementa as modificações na infraestrutura especificadas nos arquivos de configuração.
+
 4. `terraform destroy`
 
-É usado para deletar todos os recursos de infraesrtutura existentes, incluse para desfazer o que foi feito com o apply.
+    É usado para deletar todos os recursos de infraesrtutura existentes, incluse para desfazer o que foi feito com o apply.
 
 ### Subindo KVM com Terraform
 #### Instalando Terraform
