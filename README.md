@@ -31,8 +31,6 @@ virsh list
 virsh [start/autostart/reboot] [nome da vm]
 ```
 
-[Página de manuais](https://libvirt.org/manpages/index.html)    |
-    [Virtualização com libvirt](https://ubuntu.com/server/docs/virtualization-libvirt)
 
 Ao longo do deploy do KVM com terraform, há esses outros comandos virsh que serão necessários:
 - Listar redes virtuais
@@ -48,3 +46,7 @@ virsh net-dhcp-leases [nome da rede]
 - Listar pools criadas
 
 
+
+
+[Página de manuais](https://libvirt.org/manpages/index.html)    |
+    [Virtualização com libvirt](https://ubuntu.com/server/docs/virtualization-libvirt)
