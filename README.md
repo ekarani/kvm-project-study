@@ -80,7 +80,7 @@ Ao longo do deploy do KVM com terraform, há esses outros comandos virsh que ser
     virsh pool-undefine [nome]
     ```
 
-### Como funciona Terraform [to enhance yet]
+### Como funciona Terraform [to finish yet]
 
 ### Subindo um KVM com Terraform
 #### Instalando Terraform
@@ -94,7 +94,7 @@ sudo apt-get update && sudo apt-get install terraform
 ```
 Para checar se a instalação do Terraform foi bem sucedida: `terraform -v`
 
-#### Sobre o projeto terraform [to enhance yet]
+#### Sobre o projeto terraform [to finish yet]
 [Libvirt Provider no Terraform Registry](https://registry.terraform.io/providers/dmacvicar/libvirt/latest/docs)
 
 Nesse projeto, usamos dois arquivos terraform (.tf) e dois arquivos de configuração.
