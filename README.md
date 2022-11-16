@@ -11,7 +11,7 @@
 
 ### Sobre KVM com libvirt
 Primeiro é preciso verificar se o hardware do computador suporta as extensões para virtualização
-        `kvm-ok`
+        ```kvm-ok```
 Feito isso, instale os pacotes:
 ```
 sudo apt update
@@ -23,20 +23,21 @@ Esses são os pacotes relacionados ao hypervisor QEMU e à API libvirt
 Vish é uma ferramenta de linha de comando que permite o gerenciamento de máquinas virtuais.
 
 - Para listar VMs
-`virsh list`
+```virsh list```
 - Para iniciar, iniciar automaticamente após o boot e reiniciar uma VM, respectivamente
-`virsh [start/autostart/reboot] [nome da vm]`
+```virsh [start/autostart/reboot] [nome da vm]```
 
 [Página de manuais](https://libvirt.org/manpages/index.html)
+
 [Virtualização com libvirt](https://ubuntu.com/server/docs/virtualization-libvirt)
 
 Ao longo do deploy do KVM com terraform, há esses outros comandos virsh que serão necessários:
 - Listar redes virtuais
-`virsh net-list`
+```virsh net-list```
 
 - Listar IPs de uma rede
-`virsh net-dhcp-leases [nome da rede]`
+```virsh net-dhcp-leases [nome da rede]```
 
-- Lista pools criadas
+- Listar pools criadas
 
 
