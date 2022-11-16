@@ -30,20 +30,47 @@ virsh list
 ```
 virsh [start/autostart/reboot] [nome da vm]
 ```
-
-
 Ao longo do deploy do KVM com terraform, há esses outros comandos virsh que serão necessários:
-- Listar redes virtuais
-```
-virsh net-list
-```
+- virsh net
+    - Listar redes virtuais
+    ```
+    virsh net-list
+    ```
+    - Listar IPs de uma rede
+    ```
+    virsh net-dhcp-leases [nome da rede]
+    ```
 
-- Listar IPs de uma rede
-```
-virsh net-dhcp-leases [nome da rede]
-```
+- virsh pool
+    O libvirt fornece gerenciamento de armazenamento num KVM por meio de armazenamento em pools e volumes.
+    Armazenamento em pool, ou storage pool, é uma quantidade de armazenamento alocada ao host do KVM para uso da máquina virtual. O storage pool é dividido em volumes de armazenamento, ou storage volumes, e associados às VMs como dispositivos de bloco, tais como HD, CDs, DVDs, imagens ISO etc. Não é possível ter storage volumes sem um storage pool.
 
-- Listar pools criadas
+    No nosso contexto, definiremos um pool do tipo "directory pool", que é usado para hospedar arquivos de imagem, por exemplo. O formato de armazenamento que usaremos para esse directory pool é *qcow2* (QEMU copy-on-write 2).
+
+    - Listar todos os pools existentes
+    ```
+    virsh pool-list
+    ```
+    - Expor detalhes de um determinado pool
+    ```
+    virsh pool-info [nome do pool]
+    ```
+    - Criar pool
+    ```
+    virsh pool-define-as --name [nome] --type dir --target [diretório destino]
+    ```
+    - Inicializar pool
+    ```
+    virsh pool-start [nome]
+    ```
+    - Indefinir e destruir pool
+    ``` 
+    virsh pool-destroy [nome]
+    virsh pool-indefine [nome]
+    ```
+
+
+    
 
 
 
