@@ -12,7 +12,9 @@
 
 ## Sobre KVM com libvirt
 Primeiro é preciso verificar se o hardware do computador suporta as extensões para virtualização
-        ```kvm-ok```
+        ```
+        kvm-ok
+        ```
 Feito isso, instale os pacotes:
 ```
 sudo apt update
@@ -107,6 +109,9 @@ Terraform cria e gerencia recursos em diversos serviços e plataformas por meio 
 
     É usado para deletar todos os recursos de infraesrtutura existentes, incluse para desfazer o que foi feito com o apply.
 
+Para mais (e melhores) detalhes sobre Terraform para além do básico: [Learn Terraform: The Ultimate Terraform Tutorial](https://automateinfra.com/2022/01/14/learn-terraform-the-ultimate-terraform-tutorial-part-1/#what-is-terraform)
+
+
 ### Subindo KVM com Terraform
 #### Instalando Terraform
 
@@ -120,10 +125,31 @@ sudo apt-get update && sudo apt-get install terraform
 Para checar se a instalação do Terraform foi bem sucedida: `terraform -v`
 
 #### Sobre o projeto terraform [to finish yet]
-[Libvirt Provider no Terraform Registry](https://registry.terraform.io/providers/dmacvicar/libvirt/latest/docs)
 
 Nesse projeto, usamos dois arquivos terraform (.tf) e dois arquivos de configuração.
-Esses arquivos .tf poderiam ter sido reunidos num só arquivo, mas temos em mãos dois por fins de organização. Um arquivo, o *variables.tf* contém as 
+Esses arquivos .tf poderiam ter sido reunidos num só arquivo, mas temos em mãos dois por fins de organização. Um arquivo, o *variables.tf* contém variáveis, entradas relacionadas à "customização". Essas variáveis são tamanho de memória, quantidade de vCPUs, número de máquinas virtuais a serem levantadas etc.
+O arquivo *main.tf* é o arquivo com as principais configurações para o deploy com o terraform. Nele definimos quais os providers requeridos, que no nosso caso é o libvirt, e suas versões.
+
+Agora, discutindo especificamente sobre o que é definido para um KVM nesse arquivo main.tf: todas essas definições são possíveis por meio de CLIs de ferramentas como libvirt e virsh, porém o propósito de aplicar tudas essas definições num arquivo terraform é para automatizar e agilizar o processo de levantar uma VM.
+Referenciamos os arquivos de configuração da VM e da rede como "template_file" para em seguiga definirmos os elementos para o deploy da VM:
+- libvirt_cloudinit
+
+    Gerencia o disco ISO cloud-init.
+    Cloud-init é um serviço automatiza a inicialização de instâncias em nuvem, assim como possibilita a customização de Sistemas Operacionais Linux na nuvem (para isso que também temos um arquivo de configuração *cloud-init.cfg*)
+- libvirt_network
+
+    Gerencia a rede virtual em libvirt. Essa rede pode ser qualquer rede virtual, não somente no contexto de KVM, mas também em contexto Kubernetes, por exemplo.
+- libvirt_pool
+
+    Gerencia o pool storage em libvirt.
+- libvirt_volume
+
+    Gerencia o volume storagem em libvirt.
+- libvirt_domain
+
+    Gerencia domínios em libvirt. Um domínio, no contexto do libvirt, é uma instância de VM.
+
+    
     
 
 
@@ -135,4 +161,5 @@ Esses arquivos .tf poderiam ter sido reunidos num só arquivo, mas temos em mão
 [How to change kvm libvirt default storage location](https://ostechnix.com/how-to-change-kvm-libvirt-default-storage-pool-location/#:~:text=Libvirt%20provides%20storage%20management%20on%20a%20KVM%20host,and%20assigned%20to%20the%20VMs%20as%20block%20devices.)    |
     [How to provision VMs on KVM with terraform](https://computingforgeeks.com/how-to-provision-vms-on-kvm-with-terraform/)
 
-[Terraform for beginners](https://geekflare.com/terraform-for-beginners/)
+[Terraform for beginners](https://geekflare.com/terraform-for-beginners/)   |
+    [Libvirt Provider no Terraform Registry](https://registry.terraform.io/providers/dmacvicar/libvirt/latest/docs)
