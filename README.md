@@ -124,7 +124,7 @@ sudo apt-get update && sudo apt-get install terraform
 ```
 Para checar se a instalação do Terraform foi bem sucedida: `terraform -v`
 
-#### Sobre o projeto terraform [to finish yet]
+#### Sobre o projeto terraform
 
 Nesse projeto, usamos dois arquivos terraform (.tf) e dois arquivos de configuração.
 Esses arquivos .tf poderiam ter sido reunidos num só arquivo, mas temos em mãos dois por fins de organização. Um arquivo, o *variables.tf* contém variáveis, entradas relacionadas à "customização". Essas variáveis são tamanho de memória, quantidade de vCPUs, número de máquinas virtuais a serem levantadas etc.
