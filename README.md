@@ -149,7 +149,38 @@ Referenciamos os arquivos de configuração da VM e da rede como "template_file"
 
     Gerencia domínios em libvirt. Um domínio, no contexto do libvirt, é uma instância de VM.
 
-    
+### Últimos passos (finalmente)
+Resumindo o que fazer para verificar se a VM subiu, se está rodando e acessível:
+1. Verificar a lista de instâncias executando
+    ```
+    virsh list --all
+    ```
+2. Tentar acessar o console da VM
+    Há duas maneiras para tal:
+    1. Pelo `virsh console`
+        Quando executamos `virsh list`, na lista é informado o id de cada instância de VM. Com esse id, executamos
+        ```
+        virsh console [id]
+        ```
+        Para termos acesso ao terminal da VM que levantamos.
+    2. Por ssh
+        Para isso, executamos primeiro
+        ```
+        virsh net-list 
+        ```
+        (Para o caso de não lembramos quaç é o nome da rede virtual)
+        No acesso via ssh, precisamos do IP da máquina. O seguinte comando irá nos informar iiso:
+        ```
+        virsh net-dhcp-leases [nome da rede]
+        ```
+
+        Tendo o IP da máquina em mãos, basta executar:
+        ```
+        ssh -i [chave informada no cloud-init.cfg] [user]@[IP da máquina]
+        ```
+
+Esses são os procedimentos via linha de comando que permitem o acesso ao terminal da VM que subimos.
+Alternativamente, há uma aplicação desktop desenvolvida pela Red Hat chamada Virtual Machine Manager ([virt-manager](https://virt-manager.org/))
     
 
 
