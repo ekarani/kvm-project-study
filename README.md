@@ -1,5 +1,19 @@
 # Subindo KVM com Terraform
-
+## Passo a Passo
+1. ```
+   sudo apt update
+   sudo apt install qemu-kvm libvirt-daemon-system
+   ```
+2. ```
+   sudo systemctl start libvirtd
+   sudo systemctl enable libvirtd
+   sudo systemctl status libvirtd
+   ```
+3. ```
+   sudo terraform init
+   sudo terraform apply
+   ```
+   
 ### Glossário
 - **KVM:**
     Kernel-based Virtual Machine
